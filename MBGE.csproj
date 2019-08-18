@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net472</TargetFramework>
     <StartupObject>MBGE.Program</StartupObject>
     <ApplicationIcon />
@@ -27,5 +27,29 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\locale.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>locale.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\locale.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>locale.en.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\locale.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>locale.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\locale.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>locale.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
 
 </Project>
