@@ -9,6 +9,6 @@ File type of modules is not selected. But not JSON and/or SQL.
 
 
 
-Language: C#
+Language: C# 
 
-Framework: .NET Core 2.2
+Framework: .NET Framework 4.7.2 

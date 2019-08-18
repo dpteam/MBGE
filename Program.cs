@@ -6,7 +6,7 @@ namespace MBGE
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("[" + typeof(System.DateTime) + "] " + "Ok!");
         }
     }
 }
