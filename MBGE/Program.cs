@@ -10,6 +10,8 @@ namespace MBGE
 {
 	class Program
 	{
+		public static string version = "0.1.2"; // Increment only if implementing new necessary feature.
+		public static string milestone = "0lpha";
 		public static void Main(string[] args)
 		{
 			Marshal.PrelinkAll(typeof(Program));

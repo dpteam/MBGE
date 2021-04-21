@@ -1,12 +1,6 @@
-﻿using MBGE.LoggingSystem;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MBGE.ModuleSystem
 {
@@ -20,11 +14,28 @@ namespace MBGE.ModuleSystem
 
 		public static void ScanTXTs()
 		{
-			string[] textFiles = Directory.GetFiles(assemblyPath + "\\Modules\\", "*.txt", SearchOption.AllDirectories);
-			foreach (string listFiles in textFiles)
+			string[] textFiles;
+			if(Directory.Exists(@"\Modules") && File.Exists(@"\Modules\KernelModule.txt"))
 			{
-				Console.WriteLine(listFiles);
+				string txtKernel = File.ReadAllText(@"\Module\\KernelModule.txt");
+                if (new FileInfo(@"\Modules\KernelModule.txt").Length != 0 && txtKernel == "Installed 1," + Program.version + "," + Program.milestone)
+                {
+                    textFiles = Directory.GetFiles(assemblyPath + "\\Modules\\", "*.txt", SearchOption.AllDirectories);
+                    foreach (string listFiles in textFiles)
+                    {
+                        Console.WriteLine(listFiles);
+                    }
+                }
+                else
+                {
+					string txtKernelString = "Installed 1," + Program.version + "," + Program.milestone;
+					File.WriteAllText(@"\Modules\KernelModule.txt", txtKernelString);
+				}
 			}
+			else
+            {
+				Directory.CreateDirectory(@"\Modules");
+            }
 		}
 	}
 }
