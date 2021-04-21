@@ -1,22 +1,23 @@
 ﻿using System;
-using System.Threading;
-using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using MBGE.Locale;
+using MBGE.LoggingSystem;
 
 namespace MBGE
 {
 	class Program
 	{
-		static void Main(string[] args)
+		public static void Main(string[] args)
 		{
 			Marshal.PrelinkAll(typeof(Program));
-			__MBGE_LogInit();
-			Trace.WriteLine("[" + DateTime.UtcNow.ToString() + "] " + "Ok!");
-			__MBGE_PressEnter();
+			CommonStrings.InitStrings();
+			MBGE_LogInit();
+			Trace.WriteLine("[" + DateTime.UtcNow.ToString() + "] " + "[Kernel thread/" + LogStatus.Info + "]: " + "Ok!");
+			MBGE_PressEnter();
 		}
 
-		private static void __MBGE_LogInit()
+		public static void MBGE_LogInit()
 		{
 			Trace.AutoFlush = true;
 			Trace.Listeners.Clear();
@@ -24,10 +25,9 @@ namespace MBGE
 			Trace.Listeners.Add(new TextWriterTraceListener("MBGE.log"));
 		}
 
-		private static void __MBGE_PressEnter()
+		public static void MBGE_PressEnter()
 		{
-			Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("ru-RU");
-			Trace.WriteLine(Properties.locale.PressEnter);
+			Trace.WriteLine(CommonStrings.Locale_PressEnter);
 			do
 			{
 				while (!Console.KeyAvailable) { }
