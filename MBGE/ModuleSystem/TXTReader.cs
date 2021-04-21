@@ -40,7 +40,7 @@ namespace MBGE.ModuleSystem
 			}
 			catch (System.Exception e)
 			{
-				Trace.WriteLine("[" + DateTime.UtcNow.ToString() + "] " + "[Kernel thread/" + LogStatus.Info + "]: " + e.Message);
+				Trace.WriteLine("[" + DateTime.UtcNow.ToString() + "] " + "[Kernel thread/" + LogStatus.Error + "]: " + e.Message);
 			}
 			return ls;
 		}
