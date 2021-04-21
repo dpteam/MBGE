@@ -12,5 +12,6 @@ namespace MBGE.LoggingSystem
         public static string Warn = "WARNING";
         public static string Error = "ERROR";
         public static string Fatal = "FATAL";
+        public static string Msg = "MESSAGE";
     }
 }

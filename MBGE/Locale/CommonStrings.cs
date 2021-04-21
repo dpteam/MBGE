@@ -11,15 +11,15 @@ namespace MBGE.Locale
 		{
 			if (CultureInfo.CurrentCulture.Name.Equals("en-US"))
 			{
-				Locale_PressEnter = "[" + DateTime.UtcNow.ToString() + "] " + "[Kernel thread/" + LogStatus.Info + "]: " + "Press Enter!";
+				Locale_PressEnter = "[" + DateTime.UtcNow.ToString() + "] " + "[Kernel thread/" + LogStatus.Msg + "]: " + "Press Enter!";
 			}
 			else if (CultureInfo.CurrentCulture.Name.Equals("ru-RU"))
 			{
-				Locale_PressEnter = "[" + DateTime.UtcNow.ToString() + "] " + "[Kernel thread/" + LogStatus.Info + "]: " + "Нажмите клавишу Enter!";
+				Locale_PressEnter = "[" + DateTime.UtcNow.ToString() + "] " + "[Kernel thread/" + LogStatus.Msg + "]: " + "Нажмите клавишу Enter!";
 			}
 			else
             {
-				Locale_PressEnter = "[" + DateTime.UtcNow.ToString() + "] " + "[Kernel thread/" + LogStatus.Info + "]: " + "PLACEHOLDER_NO_LANG";
+				Locale_PressEnter = "[" + DateTime.UtcNow.ToString() + "] " + "[Kernel thread/" + LogStatus.Msg + "]: " + "PLACEHOLDER_NO_LANG";
 			}
 		}
 	}
