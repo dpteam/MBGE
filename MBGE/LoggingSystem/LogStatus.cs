@@ -8,10 +8,11 @@ namespace MBGE.LoggingSystem
 {
     class LogStatus
     {
+        public static string Debug = "DEBUG";
         public static string Info = "INFO";
+        public static string Msg = "MESSAGE";
         public static string Warn = "WARNING";
         public static string Error = "ERROR";
         public static string Fatal = "FATAL";
-        public static string Msg = "MESSAGE";
     }
 }

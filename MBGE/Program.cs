@@ -19,12 +19,12 @@ namespace MBGE
 			{
 				CommonStrings.InitStrings();
 				MBGE_LogInit();
-				Trace.WriteLine("[" + DateTime.UtcNow.ToString() + "] " + "[Kernel thread/" + LogStatus.Info + "]: " + "Kernel loading complete!");
+				Trace.WriteLine("[" + DateTime.UtcNow.ToString() + "] " + "[Kernel/" + LogStatus.Info + "]: " + "Kernel loading complete!");
 				ModuleSystem.TXTReader.ScanTXTs();
 			}
 			catch
 			{
-				Trace.WriteLine("[" + DateTime.UtcNow.ToString() + "] " + "[Kernel thread/" + LogStatus.Fatal + "]: " + "Unknown error!");
+				Trace.WriteLine("[" + DateTime.UtcNow.ToString() + "] " + "[Kernel/" + LogStatus.Fatal + "]: " + "Unknown error!");
 				// Needs here a error handler...
 			}
 			MBGE_PressEnter();
