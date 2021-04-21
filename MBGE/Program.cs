@@ -3,6 +3,8 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 using MBGE.Locale;
 using MBGE.LoggingSystem;
+using System.IO;
+using MBGE.ModuleSystem;
 
 namespace MBGE
 {
@@ -11,9 +13,18 @@ namespace MBGE
 		public static void Main(string[] args)
 		{
 			Marshal.PrelinkAll(typeof(Program));
-			CommonStrings.InitStrings();
-			MBGE_LogInit();
-			Trace.WriteLine("[" + DateTime.UtcNow.ToString() + "] " + "[Kernel thread/" + LogStatus.Info + "]: " + "Ok!");
+			try
+			{
+				CommonStrings.InitStrings();
+				MBGE_LogInit();
+				Trace.WriteLine("[" + DateTime.UtcNow.ToString() + "] " + "[Kernel thread/" + LogStatus.Info + "]: " + "Kernel loading complete!");
+				ModuleSystem.TXTReader.ScanTXTs();
+			}
+			catch
+			{
+				Trace.WriteLine("[" + DateTime.UtcNow.ToString() + "] " + "[Kernel thread/" + LogStatus.Fatal + "]: " + "Unknown error!");
+				// Needs here a error handler...
+			}
 			MBGE_PressEnter();
 		}
 
