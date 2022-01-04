@@ -3,16 +3,19 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 using MBGE.Locale;
 using MBGE.LoggingSystem;
-using System.IO;
 using MBGE.ModuleSystem;
+using MBGE.Config;
 
 namespace MBGE
 {
-	class Program
+	public static class Program
 	{
-		public static string version = "0.1.2"; // Increment only if implementing new necessary feature.
+		public static bool debugEnabled = true;
+		public static bool debugThrow;
+
+		public static string version = "0.1.3"; // Increment only if implementing new necessary feature.
 		public static string milestone = "0lpha";
-		public static void Main(string[] args)
+		public static void Main()
 		{
 			Marshal.PrelinkAll(typeof(Program));
 			try
@@ -20,14 +23,18 @@ namespace MBGE
 				CommonStrings.InitStrings();
 				MBGE_LogInit();
 				Trace.WriteLine("[" + DateTime.UtcNow.ToString() + "] " + "[Kernel/" + LogStatus.Info + "]: " + "Kernel loading complete!");
-				ModuleSystem.TXTReader.ScanTXTs();
+				if (debugThrow == true)
+				{
+					throw new Exception();
+				}
+				MBGE_PressEnter();
 			}
-			catch
+			catch (Exception ex)
 			{
-				Trace.WriteLine("[" + DateTime.UtcNow.ToString() + "] " + "[Kernel/" + LogStatus.Fatal + "]: " + "Unknown error!");
-				// Needs here a error handler...
+				Trace.WriteLine("[" + DateTime.UtcNow.ToString() + "] " + "[Kernel/" + LogStatus.Fatal + "]: " + $"{ex.Message}");
+				Process.Start(new ProcessStartInfo("https://stackoverflow.com/search?q=" + $"{ex.Message}") { UseShellExecute = true });
+				throw;
 			}
-			MBGE_PressEnter();
 		}
 
 		public static void MBGE_LogInit()
