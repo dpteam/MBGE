@@ -23,10 +23,10 @@ namespace MBGE
 				CommonStrings.InitStrings();
 				MBGE_LogInit();
 				Trace.WriteLine("[" + DateTime.UtcNow.ToString() + "] " + "[Kernel/" + LogStatus.Info + "]: " + "Kernel loading complete!");
+
 				if (debugThrow == true)
-				{
 					throw new Exception();
-				}
+
 				MBGE_PressEnter();
 			}
 			catch (Exception ex)
